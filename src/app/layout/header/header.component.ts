@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FinanceService } from 'src/app/services/finance.service';
 
 @Component({
   selector: 'app-header',
@@ -7,10 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   title: string = "Thiago";
+  test: any;
 
-  constructor() { }
+  constructor(private financeService: FinanceService) { }
 
   ngOnInit(): void {
+    this.financeService.getStockInformation('ITSA4.SA').subscribe(r => this.test = r);
   }
 
 }
